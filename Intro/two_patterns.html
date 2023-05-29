@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUE js Patterns</title>
+</head>
+<body>
+    <h1>Singleton & Factory Pattern</h1>
+    <p>Shared by all or one for each</p>
+
+
+    <script>
+        //singleton pattern it  ensures data consistence
+        // as there  is  only one data data is read and written on the same dataset
+        //
+        let info = {
+            city:'london'
+        }
+        let ins_a =info;
+        let ins_b =info;
+
+
+
+       // <!-- factory  -->
+       //Guarantee data independence  as  every  one get it is own copy
+       //
+       function inf0_factory(){
+        return {
+            city:'london'
+        }
+       };
+
+
+       let ins_c= inf0_factory();
+       let ins_d = inf0_factory()
+
+
+
+    </script>
+    
+</body>
+</html>

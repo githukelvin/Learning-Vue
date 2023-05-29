@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUE2 Reactivity</title>
+    <style>
+        body{
+        background-color: #000;
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.5rem;
+        text-align: center;
+        }
+        p{
+        font-size: 2rem;
+        color: #61dbc1;
+        }
+        h1{
+        font-size: 3rem;
+        color: #20398a;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Reactivity: Vue2</p>
+    <h1 id="h1">???</h1>
+
+
+    <script >
+        let info ={
+            msg:"send me to the H1 tag"  // it stores the intial value and new value
+        }
+        document.getElementById("h1").innerText= info.msg;
+        //  Object.defineProperty() helps  us set custom setters and getters
+        //it accepts three values first  the  object,name of  the new value and an object with the getter and setter
+
+
+        Object.defineProperty(info,"reactive_msg",//proxy for the info.ms g
+        {
+            get(){
+                return info.msg
+            },
+            set(newValue){
+
+                info.msg = newValue;
+                document.getElementById("h1").innerText= newValue;
+            },
+
+        })
+
+
+    </script>
+    
+</body>
+</html>

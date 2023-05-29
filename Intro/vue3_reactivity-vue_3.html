@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUE3 Reactivity</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        p {
+            font-size: 2rem;
+            color: #61dbc1;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #20398a;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Reactivity: Vue3</p>
+    <h1 id="h1">???</h1>
+
+
+    <script>
+        let info = {
+            msg: "send me to the H1 tag",  // it stores the intial value and new value
+            num: 10,
+            test(){
+                console.log(this.msg);
+            }
+        }
+        document.getElementById("h1").innerText = info.msg;
+        /**
+        * Proxy constructor accepts   two  value first  the target object
+        * Second  and object with handler function
+        **/
+        
+      let info_proxy = new Proxy(info ,{
+        //The getter and setter only  work when we modify the  property of an object
+
+        //getter function accepts three arguments  1.target object property,2.the name
+        //3. the receiveer
+        get(target,prop,receiver){
+            if(typeof target[prop] == 'string' ){
+              target[prop] = target[prop] + ' returned by proxy getter';
+            }
+           
+            return Reflect.get(...arguments);
+
+        },
+        //setter  function has 4 arguments 
+        //1. Still the same as fo the getter the it is the target
+        //2. Also  the same  name of the new name
+        //3. It is the new value 
+        //4.receiver that points to the target object
+        set(target,prop,newVal,receiver){
+            if(typeof newVal == 'string'){
+                newVal = newVal + ' returned by proxy setter';
+            }
+            document.getElementById("h1").innerText = newVal;
+           Reflect.set(...arguments)
+        },
+        }
+           
+        )
+
+    </script>
+
+</body>
+
+</html>
