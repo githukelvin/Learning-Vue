@@ -36,7 +36,7 @@ input{
         <!-- {{10 >5}} -->
         {{ msg.toUpperCase()}}
     </h2>
-      <p>{{ list[0] }} {{car.brand}}</p>
+      <p>{{ list[0] }} {{car.brand}}  {{city}}</p>
          
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -45,7 +45,8 @@ input{
         setup() {
             return {
                 //Properties will be added into the comp. instance root level
-                
+                city:'london',//avoid naming collisions'
+
             }
         },
         //options object
