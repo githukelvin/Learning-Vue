@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional Rendering</title>
+    <style>
+        h2{
+            color: rgb(8, 121, 111);
+            font-size: 2rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+        p{
+            color: rgb(8, 121, 111);
+            font-size: 2rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="vue_app">
+        <h2 v-text="title"></h2>
+        <p >{{vue_dir}}</p>
+        <p v-show="have">🍰 Have Your cake</p> <!--V-SHOW DIRECTIVe add styling of display none to the element -->
+        <p v-show="!have">🍽 Eat Your cake</p>
+
+
+        <!-- v-if -> deletes  the element completely -->
+        <p v-if="have">🍰 Have Your cake</p>
+        <p v-else="!have">🍽 Eat Your cake</p>
+        <!-- Note the  v-if ,v-else and the v-else-if will not work if there are not adjancet to each other -->
+        <p v-if="fruits == 'apple'">🍎</p>
+
+        <ul>
+            <li v-if="fruits=== 'apple'">🍎 Apple</li>
+            <li v-else-if="fruits=== 'banana'">🍌 Banana</li>
+            <li v-else-if="fruits=== 'orange'">🍊 Orange</li>
+            <li v-else>🍒 Other </li>
+        </ul>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        let app = Vue.createApp({
+            data(){
+                return{
+                    title: 'Conditional Rendering',
+                    vue_dir:'v-show,v-if,v-else,& v-else-if',
+                    have:false,
+                    fruits:'apple'
+                }
+            }
+        })
+        let vm = app.mount("#vue_app")
+    </script>
+
+    
+</body>
+</html>

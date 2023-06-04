@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ref Attribute</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                text-align: center;
+
+        
+            }
+        
+            body {
+                padding: 10px;
+            }
+        
+            h2 {
+                color: #008f7a;
+                font-size: 2rem;
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: bold;
+            }
+        
+            p {
+                color: #00c9a7;
+                font-size: 1.2rem;
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: bold;
+            }
+        
+            [v-cloak] {
+                display: none;
+            }
+        </style>
+</head>
+<body>
+    <div id="app">
+        <h2 ref="title"  v-if="control" id='title'>{{title}}</h2>
+        <p ref="msg" id="msg">{{msg}}</p>
+    </div>
+    
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="./index.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return{
+                    title:"Ref Attribute & vm.$refs",
+                    msg:"access page elem. $ child comp",
+                    control:true
+                }
+            }
+        
+        })
+            let vm = app.mount("#app")
+            let  h2 = vm.$refs.title
+    </script>
+</body>
+</html>

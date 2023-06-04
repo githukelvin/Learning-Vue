@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-for directive</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            padding: 10px;
+        }
+        h2{
+            color: #008f7a;
+            font-size: 2rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+        p,li{
+            color: #00c9a7;
+            font-size: 1.2rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- v-for  in array -->
+        <h2 style="color:#ad0889e3">{{title}}</h2>
+        <p style="color:rgba(189, 16, 16, 0.932)">v-for in array</p>
+       <ul >
+        <li v-for="(elem,index) in cities" :key="index" :ref="`li`+index">
+            {{elem}}
+        </li>
+       </ul>
+       <!-- v-for in objects -->
+       <p style="color:rgba(0, 0, 0, 0.932)">v-for in object</p>
+       <ul>
+        <li v-for="(val,prop,index) in car" :key="index" >
+            {{index}} {{prop}} {{val}}
+
+        </li>
+       </ul>
+         <!-- v-for in json -->
+            <p style="color:rgba(162, 165, 9, 0.932)">v-for in json</p>
+            <ul>
+                <li v-for="(elem,index) in json" :key="index">
+                    {{index}} {{elem.Brand}} {{elem.model}} {{elem.year}}
+                </li>
+            </ul>
+
+            <!-- v-for if the json has diferrrent values -->
+            <ul v-for="(elem,index) in cars" :key="index">
+                <li v-for="(val,prop,index) in elem" :key="idex">
+                    {{prop}}:{{val}}
+                </li>
+            </ul>
+
+    </div>
+    <script src="./index.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return{
+                    title:'v-for:iterate over[]  or {}',
+                    cities:['Dhaka','Chittagong','Rajshahi','Khulna','Barishal','Sylhet','Rangpur','Mymensingh'],
+                    json:[
+                        {Brand:'Toyota',model:'Supra',year:2002},
+                        {Brand:'Mercedes',model:'Amg',year:2011},
+                        {Brand:'Honda',model:'NSX',year:2014},
+                        {Brand:'Nissan',model:'GT-R',year:2017},
+                        {Brand:'Toyota',model:'Camry',year:2014},
+                        {Brand:'Mercedes',model:'G-wagon',year:205},
+                        {Brand:'Honda',model:'Civic',year:2010},
+                        {Brand:'Nissan',model:'Nism0',year:2019},
+                    ],
+                    car:{Brand:'Nissan',model:'GT-R32',year:2013}, 
+                    cars:[
+                    {Brand:'Nissan',model:'GT-R32',year:2013},
+                    {Brand:'Nissan',model:'GT-R35',owner:"kelvin"},
+                    {Brand:'Toyota ',owner:'Nash',price:"30m"}
+                    ],
+                     link: "https://www.linkedin.com/in/kelvingithu/"
+
+                    
+              
+                }
+            }
+        })
+            let vm = app.mount("#app")
+      
+    </script>
+    
+</body>
+</html>

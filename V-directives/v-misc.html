@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple vue directives</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+        body{
+            padding: 10px;
+        }
+        h2{
+            color: #008f7a;
+            font-size: 2rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+        p{
+            color: #00c9a7;
+            font-size: 1.2rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="vue_app">
+        <!-- v-cloak ->Used to hide un-compiled template until it is ready.  -->
+  <div v-cloak>
+        <h2>{{title}}</h2>
+        <!-- Another  way to display content to html without using moustache -->
+        <h2 v-text="title" v-once></h2><!-- v-once  directive it renders the element just onces-->
+        <!-- v-html directives -->
+        <p v-html="html"></p> <!-- Not recommended-->
+        
+        <!-- v-pre tells vue to skip compiling static code -->
+        <p v-pre>A long Static Paragraph</p>
+        <!-- v-is can convert html tag to another tag -->
+        <!-- But it is deprecated -->
+        <p v-is='`h2`'>This is a paragraph</p>
+  </div>
+
+    </div>
+    <script src="./index.js"></script>
+    <script>
+        let app = Vue.createApp({
+            data(){
+                return{
+                    title:"Simple Vue Directives",
+                    html:"<b style='color:red'>Raw HTML Codes</b>",
+                    list:['v-text','v-html','v-once','v-pre','v-is','v-cloak']
+                }
+            }
+        })
+        let vm = app.mount("#vue_app");
+    </script>
+</body>
+</html>

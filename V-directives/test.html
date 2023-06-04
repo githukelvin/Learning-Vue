@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2 v-is="`p`">{{ title }}</h2>
+        <h2  v-text="text" ></h2>
+        <h1 v-html="html"></h1>
+        <h2 v-once  v-text="vonce"></h2>
+        <h2>{{ vonce}} don't have v-once</h2>
+        <a v-bind:href="link" target="_blank">My linked in profile</a>
+        <br>
+        <a :href="link" target="_blank">My linked in profile</a>
+        <p v-show="false">This will not show</p>
+        <p v-if="val">This an Even number</p>
+        <p v-else>This is an odd number</p>
+
+        <p v-if="fruit==='banana'">This a banana</p>
+        <p v-else-if="fruit==='apple'">This an apple</p>
+        <p v-else>This is another fruit</p>
+    </div>
+    <script src="./index.js"></script>
+    <script>
+       let app= Vue.createApp({
+            data() {
+                return {
+                    title:"Illustrating v-html",
+                    text: "Illustrating v-text",
+                    html: "<h1>This is heading</h1>",
+                     link: "https://www.linkedin.com/in/kelvingithu/",
+                    vonce: "This is v-once that renders once  only",
+                    val:true,
+                    fruit:'banana'
+                }
+            }
+        });
+
+        let vm = app.mount("#app");
+    </script>
+</body>
+</html>

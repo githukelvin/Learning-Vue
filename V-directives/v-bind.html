@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-Directives</title>
+    <style>
+        h2{
+            color: rgb(8, 121, 111);
+            font-size: 2rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="vue_app">
+        <!-- Keep directives values simple -->
+        <!-- v-bind is a scope -->
+        <h2 v-bind:title="title">{{msg }}</h2>
+
+        <!-- shorthand -->
+        <h2 :title="title">{{msg }}</h2>
+        <!-- We use v-bind to control  our input value -->
+        <input type="text" :value="msg" :disabled="true">
+        <!-- understanding v-dir  -->
+        <!-- A  v-dir has  three  parts -->
+        <!-- 1. v-dir-name -->
+        <!-- 2. dir_arg -->
+        <!-- 3. dir_modifiers -->
+        <!-- combined  tag is -->
+        <!-- v-dir-name:dir_arg=dir_modifiers -->
+
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        let app = Vue.createApp({
+            data() {
+                return {
+                    title: "Control HTML attributes using v-bind.",
+                    msg:"Vue directives: v-bind"
+                }
+            },
+
+        })
+
+        let vm = app.mount("#vue_app")
+
+
+    </script>
+    
+</body>
+</html>
