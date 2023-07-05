@@ -28,24 +28,14 @@
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
   </div>
-  <div>{{ srcData }}</div>
 </template>
 
 <script>
-import srcData from '@/data.json'
-console.log(srcData)
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
-  },
-  data () {
-    return {
-      srcData,
-      r: 'Welcome to Your Vue.js App'
-    }
   }
-
 }
 </script>
 
