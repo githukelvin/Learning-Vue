@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue3 Computed</title>
+</head>
+<body>
+    <div id="app">
+        <h1><b>{{brand}}</b><i>{{model}}</i><span>{{reg_year}}</span></h1>
+        <h2>
+            Age: {{carAge}}
+        </h2>
+
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        let app = Vue.createApp({
+            data() {
+                return {
+                    brand:"Toyota",
+                    model:"Corolla",
+                    reg_year: "2015"
+                }
+            },
+            computed:{
+                carAge(){
+                    return new Date().getFullYear() - this.reg_year
+                },
+                fullName:{
+                    get(){
+                        return this.brand+' '+this.model
+                    },
+                    set(newValue){
+                        this.brand= newValue[0]
+                        this.model=newValue[1]
+                    }
+                }
+            }
+
+        })
+        let vm = app.mount('#app')
+    </script>
+</body>
+</html>

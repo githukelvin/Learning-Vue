@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="outer($event)()">Vue Button</button>
+        <hr>
+        <button id="bNative">Native Button</button>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+   <script>
+    let app = Vue.createApp({
+        methods: {
+            outer(){
+                //outer scope
+                console.log("Vue outeer function")
+                let num=100
+                return ()=>{
+                    console.log(num--)
+                   console.log("Vue inner function") 
+                }
+            }
+        },
+
+    })
+    let vm = app.mount('#app')
+   </script> 
+   <script>
+    let bNative = document.querySelector("#bNative")
+    bNative.addEventListener('click',(()=>{
+        console.log("Hello Closure!")
+        console.log("native outer function")
+        let num =0
+        return ()=>{
+            console.log(num++)
+            console.log("inner closure of native button click event listener.")
+        }
+    })())
+   </script>
+</body>
+</html>

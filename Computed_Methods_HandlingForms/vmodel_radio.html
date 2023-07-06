@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vmodel Radio</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <input v-model="picked" type="radio" name="pick" value="apple" id="pick"><b>Apple</b>
+        <input v-model="picked" type="radio" name="pick" value="kiwi" id="pick"><b>Kiwi</b>
+        <input v-model="picked" type="radio" name="pick" value="banana" id="pick"><b>Banana</b>
+        <input v-model="picked" type="radio" name="pick" value="grapes" id="pick"><b>Grapes</b>
+        <p>Picked: {{picked}}</p>
+    </div>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        let app= Vue.createApp({
+            data() {
+                return {
+                    msg: "Vmodel radio buttons",
+                    picked:'banana '
+                }
+            },
+            methods: {
+              
+            },
+        })
+        let vm = app.mount("#app")
+    </script>
+</body>
+</html>

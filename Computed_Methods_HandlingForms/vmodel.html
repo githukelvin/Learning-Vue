@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vmodel</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{msg}}</h2>
+        <input type="text" name="name"   id="name" v-model.number.lazy.trim="msg">
+        <!-- <input type="text" :value="msg" @input="msg=$event.target.value" placeholder="Vmodel" name="name" id="name"> -->
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        let app = Vue.createApp({
+            data() {
+                return {
+                    msg:'Form Input binding'
+                }
+            },
+        })
+        const vm = app.mount('#app')
+   
+    </script>
+</body>
+</html>

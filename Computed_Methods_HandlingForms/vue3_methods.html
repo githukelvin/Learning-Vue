@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue3 Methods</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{title}}</h2>
+        <p>Count {{num}}</p>
+        <!-- using the @click directive to call a function -->
+        <button v-on:click="increment($event)">increment</button>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        let app = Vue.createApp({
+            data() {
+                return {
+                    title: "Vue methods & v-on/@",
+                    note:'event modifiers not included',
+                    num:0
+                }
+            },
+            methods: {
+                test(){
+                    console.log('test method called')
+                    return this
+                },
+                increment(e){
+                    console.log('this is increment method')
+                    console.log(e)
+                    this.num++
+                }
+            },
+        })
+        let vm = app.mount("#app")
+    </script>
+</body>
+</html>

@@ -41,7 +41,7 @@ export default {
   },
   data () {
     return {
-      srcData,
+      srcData: srcData,
       r: 'Welcome to Your Vue.js App'
     }
   }

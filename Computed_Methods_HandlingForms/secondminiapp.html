@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Mini App</title>
+    <style>
+         body,h1,button,p,span,ul,li{padding:0;margin:0}
+    body{padding:10px;}
+    h1{text-align:center;color:#2C73D2;font-family:monospace;font-size:24px;margin-bottom:10px}
+    button{margin-left:5px;font-size:12px;padding:2px;}
+    span{font-size:10px;margin-left:5px;font-family:Verdana, Geneva, Tahoma, sans-serif;color:#0081CF}
+    p{line-height:36px;font-family:Arial, Helvetica, sans-serif;color:#008F7A}
+    ul{margin:15px;font-family:Arial, Helvetica, sans-serif;color:#2C73D2}
+    li{line-height:30px}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2>{{msg}}</h2>
+        <!-- Inp"ut field for adding new todos -->
+        <input @input.trim="cutextra" type='text' :placeholder="placeholder" v-model='newTodo'>
+        <span>{{remaining+'/'+max}} characters</span>
+        <button @click="add" :disabled="newTodo.length ==0">Add</button>
+        <br><br>
+        <div class="todosh">
+            <ul v-for="(todo,index) in todos" :key="index">
+                <li> {{todo}}
+                    <button @click='delete_item(index)' >Delete</button>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        let app = Vue.createApp({
+            data() {
+                return {
+                    msg:'Mini Project to do app',
+                    max:100,
+                    newTodo:'',
+                    todos:['Finish this second lesson',"Do some python code"]
+                }
+            },
+            methods: {
+                cutextra(){
+                    if(this.newTodo.length >= this.max){
+                        alert("You have reached the maximum limit of characters");
+                        return this.newTodo = this.newTodo.slice(0,this.max)
+                    }
+                },
+              delete_item(index){
+                    this.todos.splice(index,1)
+                },
+              add(){
+                if(this.todos.includes(this.newTodo)){
+                    console.log('This todo already exists')
+                }
+                else{
+                    this.todos.push(this.newTodo)
+                    this.newTodo=""
+                }
+              }
+
+            },
+            computed: {
+              remaining(){
+                return remaing = this.max - this.newTodo.length
+              },
+              placeholder(){
+                if (this.todos.length == 0){
+                 return   "Enter your first task " + this.todos.length + ' todos'
+                }
+                else{
+                  return  "You have" +this.todos.length + " todos"
+                }
+              }
+            },
+        })
+        let vm = app.mount("#app")
+    </script>
+</body>
+</html>

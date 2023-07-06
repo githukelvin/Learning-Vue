@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini app</title>
+</head>
+<body>
+    <div id="app">
+        <h2>Miniapp app to limit user-submitted data</h2>
+        <input @input="trimmedMsg" v-model.trim="msg" type="text" name="name" id="name">
+      <p> {{countChars}} characters used</p>
+      <p>{{remainigCharacters}} remaining Characters</p>
+      <p>{{max}} characters maximum</p>
+    </div>
+     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+        let app = Vue.createApp({
+            data() {
+                return {
+                    msg:'hello',
+                    max:100,
+                    count:0,
+                    rem:0
+                }
+            },
+            methods: {
+                trimmedMsg(){
+                    if(this.msg.length >=  this.max){
+                        return this.msg = this.msg.slice(0,this.max)
+                    }
+                }
+            },
+            
+            computed: {
+                remainigCharacters(){
+                    return this.rem = this.max - this.countChars;
+                },
+                countChars(){
+                    return this.count = this.msg.length
+                },
+          
+            },
+        })
+        let vm = app.mount("#app")
+    </script>
+</body>
+</html>

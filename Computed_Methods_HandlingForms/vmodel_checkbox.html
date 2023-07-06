@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-model CheckBox</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        span{
+            color:#ff5722 ;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>{{msg}}</h1>
+        <!-- v-model directive for checkboxes -->
+        <input type="checkbox" name="apple" id="check" v-model="list"  value="apple"><b>Apples</b>
+        <input type="checkbox" name="banana" id="check" v-model="list"  value="banana"><b>Banana</b>
+        <input type="checkbox" name="grapes" id="check"  v-model="list" value="grapes"><b>Grapes</b>
+        <input type="checkbox" name="orange" id="check" v-model="list"  value="oranges"><b>Oranges</b>
+        <input type="checkbox" name="peache" id="check" v-model="list"  value="peaches"><b>Peaches</b>
+        <p>Selected: <span>{{list}}</span></p>
+        <!-- Select -->
+        <select v-model="fruit">
+            <option value="apple">Apple</option>
+            <option value="banana">Banana</option>
+            <option value="kiwi">Kiwi</option>
+            <option value="peache">Peaches</option>
+            <option value="grapes">Grapes</option>
+            <option value="plum">Plums</option>
+        </select>
+        <p>You have picked {{fruit}} as your favourite fruit</p>
+    </div>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        let app = Vue.createApp({
+            data() {
+                return {
+                    msg:'v-model with checkbox',
+                   list:['apple','oranges'] ,
+                   fruit:'kiwi'
+                }
+            },
+        })
+        let vm = app.mount("#app")
+    </script>
+</body>
+</html>
